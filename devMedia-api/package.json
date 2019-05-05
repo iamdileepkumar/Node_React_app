@@ -18,5 +18,8 @@
   "homepage": "https://github.com/dileepkumar9030/Node_React_app#readme",
   "devDependencies": {
     "nodemon": "^1.18.11"
+  },
+  "dependencies": {
+    "uuid": "^3.3.2"
   }
 }
