@@ -23,11 +23,22 @@ const myEmitter = new MyEmitter();
 // myEmitter.emit('event', 'a', 'b')
 
 
-myEmitter.once('newListener', (event, listener)=>{
-    if(event==='event'){
-        myEmitter.on('event', ()=>console.log('B'))
-    }
-})
+// myEmitter.once('newListener', (event, listener)=>{
+//     if(event==='event'){
+//         myEmitter.on('event', ()=>console.log('B'))
+//     }
+// })
 
-myEmitter.on('event', ()=>console.log('A'))
-myEmitter.emit('event')
+// myEmitter.on('event', ()=>console.log('A'))
+// myEmitter.emit('event')
+
+myEmitter.emit('event', 'tech', 'office')
+myEmitter.on('event', (a,b)=>{
+    setImmediate(()=>console.log('this happens asynchronously'))
+    function cb(){
+        console.log('this happens second', a, b);
+    }
+    process.nextTick(cb)
+    console.log('this happens first', a, b);
+    
+})
